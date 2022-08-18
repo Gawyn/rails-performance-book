@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+Film.destroy_all
+Inventory.destroy_all
+Store.destroy_all
+
+Film.create(title: 'Breathless')
+Film.create(title: 'Ordet')
+Film.create(title: 'Imitation of Life')
+
+5.times do
+  store = Store.create
+
+  Film.all.each do |film|
+    Inventory.create(film: film, store: store)
+  end
+end
