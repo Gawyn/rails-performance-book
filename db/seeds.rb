@@ -11,12 +11,13 @@ Film.destroy_all
 Inventory.destroy_all
 Store.destroy_all
 
-Film.create(title: 'Breathless')
-Film.create(title: 'Ordet')
-Film.create(title: 'Imitation of Life')
+Film.create(title: 'Breathless', language: Language.create(name: 'french'))
+Film.create(title: 'Ordet', language: Language.create(name: 'danish'))
+Film.create(title: 'Imitation of Life', language: Language.create(name: 'english'))
 
-5.times do
-  store = Store.create
+5.times do |i|
+  store = Store.new(id: i+1)
+  store.save(validate: false)
 
   Film.all.each do |film|
     Inventory.create(film: film, store: store)
