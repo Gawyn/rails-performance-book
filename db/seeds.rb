@@ -6,14 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require 'csv'
 
-Film.destroy_all
-Inventory.destroy_all
-Store.destroy_all
+[Film, Inventory, Language, Store].each(&:destroy_all)
 
-Film.create(title: 'Breathless', language: Language.create(name: 'french'))
-Film.create(title: 'Ordet', language: Language.create(name: 'danish'))
-Film.create(title: 'Imitation of Life', language: Language.create(name: 'english'))
+CSV.read('lib/data.csv').each do |title, language|
+  Film.create(title: title, language: Language.find_or_create_by(name: language))
+end
 
 5.times do |i|
   store = Store.new(id: i+1)
