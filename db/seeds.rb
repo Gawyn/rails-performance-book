@@ -8,17 +8,25 @@
 
 require 'csv'
 
-[Film, Inventory, Language, Store].each(&:destroy_all)
+p 'Destroying previous DB'
+[Film, Inventory, Language, Store].each(&:delete_all)
 
-CSV.read('lib/data.csv').each do |title, language|
+p 'Creating films'
+data = CSV.read('lib/data.csv')
+data.each do |title, language|
   Film.create(title: title, language: Language.find_or_create_by(name: language))
 end
 
-5.times do |i|
+p "Creating 100 stores"
+
+10.times do |i|
+  p "Creating store number #{i+1}"
   store = Store.new(id: i+1)
   store.save(validate: false)
 
-  Film.all.each do |film|
-    Inventory.create(film: film, store: store)
-  end
+  film_ids = Film.pluck(:id)
+
+  attrs = film_ids.map { |film_id| {film_id: film_id, store_id: store.id} }
+
+  Inventory.insert_all attrs
 end
