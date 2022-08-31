@@ -17,7 +17,7 @@ data.each do |title, language|
   Film.create(title: title, language: Language.find_or_create_by(name: language))
 end
 
-p "Creating 100 stores"
+p "Creating 10 stores"
 
 10.times do |i|
   p "Creating store number #{i+1}"
