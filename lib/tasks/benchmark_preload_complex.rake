@@ -16,15 +16,11 @@ task benchmark_preload_complex: :environment do
   memory = {simple: {}, complex: {}}
 
   stores = Store.all.to_a
-  p stores
 
   p "Executing complex exercise with n+1"
   report = MemoryProfiler.report do
-    p 1
     h[:complex][:n_plus_1] = Benchmark.measure do
-      p 2
       stores.each do |store|
-        p store.id
         store.films.map { |f| f.language.name }
       end
     end
@@ -34,9 +30,7 @@ task benchmark_preload_complex: :environment do
 
   p "Executing complex exercise with preload"
   report = MemoryProfiler.report do
-    p 'a'
     h[:complex][:preload] = Benchmark.measure do
-      p 'in it'
       stores.each do |store|
         p store.id
         store.films.preload(:language).map { |f| f.language.name }

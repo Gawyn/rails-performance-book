@@ -4,4 +4,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :stores, only: [:show]
+
+  namespace :api do
+    namespace :v1 do
+      resources :films, only: [] do
+        collection do
+          get :lean
+        end
+      end
+    end
+  end
 end

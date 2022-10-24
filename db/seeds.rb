@@ -8,19 +8,20 @@
 
 require 'csv'
 
-p 'Destroying previous DB'
+pp 'Destroying previous DB'
 [Film, Inventory, Language, Store].each(&:delete_all)
 
-p 'Creating films'
+pp 'Creating films'
 data = CSV.read('lib/data.csv')
+long_text = File.open('lib/assets/long_text.txt').read
 data.each do |title, language|
-  Film.create(title: title, language: Language.find_or_create_by(name: language))
+  Film.create(title: title, language: Language.find_or_create_by(name: language), big_text_column: long_text)
 end
 
-p "Creating 10 stores"
+pp "Creating 10 stores"
 
 10.times do |i|
-  p "Creating store number #{i+1}"
+  pp "Creating store number #{i+1}"
   store = Store.new(id: i+1)
   store.save(validate: false)
 
