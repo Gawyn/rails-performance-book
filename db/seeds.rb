@@ -13,7 +13,7 @@ pp 'Destroying previous DB'
 
 pp 'Creating films'
 data = CSV.read('lib/data.csv')
-long_text = File.open('lib/assets/long_text.txt').read
+long_text = File.open('lib/assets/long_text.txt').read[0..64000]
 data.each do |title, language|
   Film.create(title: title, language: Language.find_or_create_by(name: language), big_text_column: long_text)
 end

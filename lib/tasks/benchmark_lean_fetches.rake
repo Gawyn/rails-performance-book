@@ -10,6 +10,7 @@ task benchmark_lean_fetches: :environment do
       objects_retained: report.total_retained,
       memsize_retained: report.total_retained_memsize
     }
+  end
 
   h = {}
   memory = {}

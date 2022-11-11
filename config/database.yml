@@ -4,24 +4,29 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem "sqlite3"
 #
-default: &default
+postgres: &postgres
   adapter: postgresql
   encoding: unicode
   pool: 5
   username: postgres
   password: password
 
+mysql: &mysql
+  adapter: mysql2
+  encoding: utf8
+  username: root
+
 development:
-  <<: *default
+  <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
   database: moviestore_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+  <<: *mysql
   database: moviestore_test
 
 production:
-  <<: *default
+  <<: *mysql
   database: moviestore_production

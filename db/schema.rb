@@ -11,10 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_10_19_001650) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "films", force: :cascade do |t|
+  create_table "films", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -22,20 +19,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_001650) do
     t.text "big_text_column"
   end
 
-  create_table "inventories", force: :cascade do |t|
+  create_table "inventories", charset: "utf8mb3", force: :cascade do |t|
     t.integer "film_id"
     t.integer "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "languages", force: :cascade do |t|
+  create_table "languages", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "stores", force: :cascade do |t|
+  create_table "stores", charset: "utf8mb3", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
