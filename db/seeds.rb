@@ -21,10 +21,11 @@ data.each_with_index do |content, i|
   puts "Creating film #{i+1} of #{n}"
   language = Language.where(name: language_name).first
   unless language
-    language = Language.new(id: language_i, name: language_name).save
+    language = Language.new(id: language_i, name: language_name)
+    language.save
     language_i += 1
   end
-  Film.new(id: i + 1, title: title, language: Language.find_or_create_by(name: language), big_text_column: long_text).save
+  Film.new(id: i + 1, title: title, language: language, big_text_column: long_text).save
 end
 
 pp "Creating 10 stores"
