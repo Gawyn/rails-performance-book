@@ -9,7 +9,7 @@
 require 'csv'
 
 pp 'Destroying previous DB'
-[Film, Inventory, Language, Store].each(&:delete_all)
+[Customer, Film, Inventory, Language, Rental, Store].each(&:delete_all)
 
 pp 'Creating films'
 data = CSV.read('lib/data.csv')
@@ -40,4 +40,21 @@ pp "Creating 10 stores"
   attrs = film_ids.map { |film_id| {film_id: film_id, store_id: store.id} }
 
   Inventory.insert_all attrs
+end
+
+['Yukihiro Matsumoto', 'David Heinemeier Hansson', 'Aaron Patterson', 'Eileen Uchitelle', 'Xavier Noria', 
+ 'Akira Matoba', 'Sandi Metz', 'Penelope Phippen', 'Rafael França', 'Brandon Weaver'].each_with_index do |name, i|
+   customer = Customer.new(id: i+1, name: name)
+   customer.save
+   store = Store.find(i+1)
+
+   10.times do |i|
+     rental_date = (10 + (i * 7)).days.ago.beginning_of_day
+     Rental.create(
+       customer: customer,
+       inventory: store.inventories.sample,
+       rental_date: rental_date,
+       returnal_date: rental_date + 3.days
+     )
+   end
 end

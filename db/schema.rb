@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_19_001650) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_201622) do
+  create_table "customers", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "films", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "language_id"
     t.text "big_text_column"
+    t.index ["language_id", "title"], name: "index_films_on_language_id_and_title"
+    t.index ["title"], name: "index_films_on_title"
   end
 
   create_table "inventories", charset: "utf8mb3", force: :cascade do |t|
@@ -28,6 +36,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_001650) do
 
   create_table "languages", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rentals", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "inventory_id"
+    t.integer "customer_id"
+    t.datetime "rental_date"
+    t.datetime "returnal_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
