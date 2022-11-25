@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_080444) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rental_counter"
   end
 
   create_table "films", charset: "utf8mb3", force: :cascade do |t|
