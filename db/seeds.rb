@@ -48,7 +48,7 @@ end
    customer.save
    store = Store.find(i+1)
 
-   10.times do |i|
+   100.times do |i|
      rental_date = (10 + (i * 7)).days.ago.beginning_of_day
      Rental.create(
        customer: customer,

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
           get :lean
         end
       end
+
+      resources :customers, only: [:index]
     end
   end
 end
