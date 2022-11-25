@@ -16,7 +16,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_153237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rental_counter"
-    t.integer "rentals_count"
   end
 
   create_table "films", charset: "utf8mb3", force: :cascade do |t|
