@@ -9,7 +9,7 @@ class Api::V1::CustomerPresenter
     {
       id: resource.id,
       name: resource.name,
-      rental_counter: resource.rentals.count
+      rental_counter: resource.rentals_count
     }
   end
 end
