@@ -32,7 +32,7 @@ pp "Creating 10 stores"
 
 10.times do |i|
   pp "Creating store number #{i+1}"
-  store = Store.new(id: i+1)
+  store = Store.new(id: i+1, name: "Store #{i+1}")
   store.save(validate: false)
 
   film_ids = Film.pluck(:id)

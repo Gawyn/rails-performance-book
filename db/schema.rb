@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_25_080444) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_180005) do
   create_table "customers", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rental_counter"
+    t.integer "rentals_count"
   end
 
   create_table "films", charset: "utf8mb3", force: :cascade do |t|
@@ -52,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_080444) do
   create_table "stores", charset: "utf8mb3", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
 end
