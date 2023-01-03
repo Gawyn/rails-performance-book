@@ -1,5 +1,5 @@
-table
-  - @films.each do |film|
-    tr 
-      td = film.title
-      td = film.language.name
+- @films.each do |film|
+  .film
+    h2 = film.title
+    p = "Language: #{film.language.name}"
+    p = "Available at #{film.stores.pluck(:name).join(', ')}"
