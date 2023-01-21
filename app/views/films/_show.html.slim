@@ -1,0 +1,5 @@
+- cache film do 
+  .film
+    h2 = film.title
+    p = "Language: #{film.language.name}"
+    p = "Available at #{film.stores.pluck(:name).join(', ')}"
