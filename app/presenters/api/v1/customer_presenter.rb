@@ -1,9 +1,5 @@
 class Api::V1::CustomerPresenter
-  attr_reader :resource
-
-  def initialize(customer)
-    @resource = customer
-  end
+  private
 
   def to_json
     {
