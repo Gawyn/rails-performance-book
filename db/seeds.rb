@@ -58,3 +58,12 @@ end
      )
    end
 end
+
+1000.times do
+  Customer.create(name: "Dummy Costumer")
+end
+
+# Matz follows everyone
+Customer.where("id > 1").each do |customer|
+  Following.create(follower_id: 1, followed_id: customer.id)
+end

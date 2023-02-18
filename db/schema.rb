@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_11_180005) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_065035) do
   create_table "customers", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -27,6 +27,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_180005) do
     t.text "big_text_column"
     t.index ["language_id", "title"], name: "index_films_on_language_id_and_title"
     t.index ["title"], name: "index_films_on_title"
+  end
+
+  create_table "followings", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "inventories", charset: "utf8mb3", force: :cascade do |t|
