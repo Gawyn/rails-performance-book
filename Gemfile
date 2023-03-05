@@ -60,6 +60,8 @@ gem 'actionpack-page_caching', "~> 1.2.4"
 
 gem 'identity_cache'
 
+gem 'dalli'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
