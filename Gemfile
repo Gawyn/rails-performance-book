@@ -49,8 +49,6 @@ gem 'slim'
 
 gem 'memory_profiler'
 
-gem 'actionpack-action_caching'
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 
