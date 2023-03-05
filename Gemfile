@@ -55,6 +55,11 @@ gem 'devise'
 
 gem 'kaminari'
 
+gem 'actionpack-action_caching', "~> 1.2.2"
+gem 'actionpack-page_caching', "~> 1.2.4"
+
+gem 'identity_cache'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
