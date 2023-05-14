@@ -53,6 +53,8 @@ gem 'cityhash'
 
 gem 'devise'
 
+gem 'kaminari'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
