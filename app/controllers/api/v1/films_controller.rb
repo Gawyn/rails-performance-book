@@ -4,7 +4,17 @@ class Api::V1::FilmsController < ApplicationController
   end
 
   def index
-    render json: scope.map { |film| Api::V1::FilmPresenter.new(film).to_json }
+    render json: {
+      films: scope.select(:id, :title).map do |film| 
+        Api::V1::FilmPresenter.new(film).to_json.tap do |film_json|
+          if params['store_id']
+            rentals_url = api_v1_store_film_rentals_url(film_id: film.id, store_id: params['store_id'])
+            film_json.merge!(rentals_url: rentals_url)
+          end
+        end
+      end,
+      count: scope.count
+    }
   end
 
   def rentals
@@ -33,6 +43,6 @@ class Api::V1::FilmsController < ApplicationController
       aux = Film.where(language_id: language.id).order("title asc")
     end
 
-    aux.select(:id, :title)
+    aux
   end
 end
