@@ -49,6 +49,8 @@ gem 'slim'
 
 gem 'memory_profiler'
 
+gem 'cityhash'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
