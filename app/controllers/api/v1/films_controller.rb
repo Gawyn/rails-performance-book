@@ -1,4 +1,6 @@
 class Api::V1::FilmsController < ApplicationController
+  include Kaminari::Helpers::UrlHelper
+
   def lean
     render json: json_response
   end
@@ -13,7 +15,10 @@ class Api::V1::FilmsController < ApplicationController
           end
         end
       end,
-      count: scope.count
+      count: scope.count,
+      previous_page: prev_page_url(scope),
+      next_page: next_page_url(scope),
+      total_pages: scope.total_pages
     }
   end
 
@@ -43,6 +48,6 @@ class Api::V1::FilmsController < ApplicationController
       aux = Film.where(language_id: language.id).order("title asc")
     end
 
-    aux
+    aux.page(params[:page]).per(params[:per_page])
   end
 end
