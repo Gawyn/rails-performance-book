@@ -6,20 +6,27 @@ class Api::V1::FilmsController < ApplicationController
   end
 
   def index
-    render json: {
-      films: scope.select(:id, :title).map do |film| 
-        Api::V1::FilmPresenter.new(film).to_json.tap do |film_json|
-          if params['store_id']
-            rentals_url = api_v1_store_film_rentals_url(film_id: film.id, store_id: params['store_id'])
-            film_json.merge!(rentals_url: rentals_url)
-          end
-        end
-      end,
-      count: scope.count,
-      previous_page: prev_page_url(scope),
-      next_page: next_page_url(scope),
-      total_pages: scope.total_pages
-    }
+    if params[:cbp]
+      results = cbp_scope(Film, params[:cursor])
+      response = {
+        films: full_films_json_response
+      }
+
+      if results.count > 0
+        response[:previous_page] = api_v1_films_url(cbp: true, cursor: generate_cursor('id', results&.first&.id, '<'))
+        response[:next_page] = api_v1_films_url(cbp: true, cursor: generate_cursor('id', results&.last&.id, '>'))
+      end
+
+      render json: response
+    else
+      render json: {
+        films: full_films_json_response
+        count: scope.count,
+        previous_page: prev_page_url(scope),
+        next_page: next_page_url(scope),
+        total_pages: scope.total_pages
+      }
+    end
   end
 
   def rentals
@@ -31,23 +38,36 @@ class Api::V1::FilmsController < ApplicationController
 
   private
 
+  def full_films_json_response
+    scope.select(:id, :title).map do |film| 
+      Api::V1::FilmPresenter.new(film).to_json.tap do |film_json|
+        if params['store_id']
+          rentals_url = api_v1_store_film_rentals_url(film_id: film.id, store_id: params['store_id'])
+          film_json.merge!(rentals_url: rentals_url)
+        end
+      end
+    end
+  end
+
   def json_response
     Film.all.map { |m| {id: m.id, title: m.title} }.to_json
   end
 
   def scope
-    aux = if params[:store_id]
-      @store = Store.find(params[:store_id])
-      @store.films
-    else
-      Film
-    end
+    @scope ||= begin
+      aux = if params[:store_id]
+        @store = Store.find(params[:store_id])
+        @store.films
+      else
+        Film
+      end
 
-    if params[:language]
-      language = Language.where(name: params[:language]).first
-      aux = Film.where(language_id: language.id).order("title asc")
-    end
+      if params[:language]
+        language = Language.where(name: params[:language]).first
+        aux = Film.where(language_id: language.id).order("title asc")
+      end
 
-    aux.page(params[:page]).per(params[:per_page])
+      aux.page(params[:page]).per(params[:per_page])
+    end
   end
 end
