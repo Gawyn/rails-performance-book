@@ -62,6 +62,8 @@ gem 'identity_cache'
 
 gem 'dalli'
 
+gem 'cityhash'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
