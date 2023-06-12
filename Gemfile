@@ -51,6 +51,8 @@ gem 'memory_profiler'
 
 gem 'cityhash'
 
+gem 'devise'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
