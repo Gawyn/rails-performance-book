@@ -1,3 +1,5 @@
+require 'kaminari/helpers/helper_methods'
+
 class Api::V1::FilmsController < ApplicationController
   include Kaminari::Helpers::UrlHelper
 
