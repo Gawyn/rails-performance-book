@@ -49,8 +49,6 @@ gem 'slim'
 
 gem 'memory_profiler'
 
-gem 'cityhash'
-
 gem 'devise'
 
 gem 'kaminari'
