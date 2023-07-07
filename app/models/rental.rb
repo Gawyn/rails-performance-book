@@ -6,6 +6,12 @@ class Rental < ApplicationRecord
   has_one :store, through: :inventory
   has_one :film, through: :inventory
 
+  scope :to_be_archived, -> { where("returnal_date < ?", Time.now - 1.year) }
+
+  def archived_rentals_bucket_key
+    "archived_rentals_for_user#{customer_id}"
+  end
+
   private
 
   def cache_for_followers
