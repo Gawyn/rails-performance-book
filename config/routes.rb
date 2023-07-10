@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
       resources :customers, only: [:index] do
         get :timeline
+        get :rentals
       end
 
       resources :stores, only: [:show]

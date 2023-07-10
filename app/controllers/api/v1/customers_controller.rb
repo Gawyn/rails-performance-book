@@ -11,4 +11,9 @@ class Api::V1::CustomersController < ApplicationController
 
     render json: rentals.map { |rental| Api::V1::RentalPresenter.new(rental).to_json }
   end
+
+  def rentals
+    @customer = Customer.find params[:customer_id]
+    render json: @customer.rentals.map { |rental| Api::V1::RentalPresenter.new(rental).to_json }
+  end
 end
