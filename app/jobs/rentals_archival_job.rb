@@ -4,7 +4,7 @@ class RentalsArchivalJob < ApplicationJob
   def perform(*args)
     Rental.to_be_archived.each do |rental|
       redis_client.rpush(
-        rental.archived_rentals_bucket_key,
+        Rental.archived_rentals_bucket_key(rental.customer_id),
         rental.attributes
       )
 

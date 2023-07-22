@@ -8,8 +8,8 @@ class Rental < ApplicationRecord
 
   scope :to_be_archived, -> { where("returnal_date < ?", Time.now - 1.year) }
 
-  def archived_rentals_bucket_key
-    "archived_rentals_for_user#{customer_id}"
+  def self.archived_rentals_bucket_key(customer_id)
+    "archived_rentals_for_user_#{customer_id}"
   end
 
   private
