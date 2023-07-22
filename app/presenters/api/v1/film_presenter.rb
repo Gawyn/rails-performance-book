@@ -6,6 +6,7 @@ class Api::V1::FilmPresenter
   end
 
   def to_json
+    return nil unless resource
     {
       id: resource.id,
       title: resource.title

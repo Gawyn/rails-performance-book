@@ -9,7 +9,7 @@ class Api::V1::StorePresenter
     {
       id: resource.id,
       title: resource.name,
-      most_rented_film: Api::V1::FilmPresenter.new(@resource.most_rented_film).to_json
+      most_rented_film: Api::V1::FilmPresenter.new(resource.most_rented_film).to_json
     }
   end
 end
