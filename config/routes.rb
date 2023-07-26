@@ -20,7 +20,11 @@ Rails.application.routes.draw do
         get :rentals
       end
 
-      resources :stores, only: [:show]
+      resources :stores, only: [:show] do
+        resources :films, only: [:index] do
+          get :rentals
+        end
+      end
     end
   end
 
