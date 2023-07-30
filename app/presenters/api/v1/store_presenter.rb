@@ -8,7 +8,7 @@ class Api::V1::StorePresenter
   def to_json
     {
       id: resource.id,
-      title: resource.name,
+      name: resource.name,
       most_rented_film: Api::V1::FilmPresenter.new(resource.most_rented_film).to_json
     }
   end

@@ -6,6 +6,8 @@ class Api::V1::Presenter
   end
 
   def to_json(exclude: [])
+    return nil unless resource
+
     json_object = cached_object
 
     exclude.each do |excluded_attr|

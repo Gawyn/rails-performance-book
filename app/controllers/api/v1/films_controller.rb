@@ -49,7 +49,7 @@ class Api::V1::FilmsController < ApplicationController
         Api::V1::FilmPresenter.new(film).to_json.merge(rentals: json_rentals)
       end
     else
-      scope.select(:id, :title).map do |film|
+      scope.select(:id, :title, :updated_at).map do |film|
         Api::V1::FilmPresenter.new(film).to_json
       end
     end
