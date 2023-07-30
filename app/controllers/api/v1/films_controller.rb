@@ -22,7 +22,7 @@ class Api::V1::FilmsController < ApplicationController
       render json: response
     else
       render json: {
-        films: full_films_json_response
+        films: full_films_json_response,
         count: scope.count,
         previous_page: prev_page_url(scope),
         next_page: next_page_url(scope),
@@ -41,12 +41,16 @@ class Api::V1::FilmsController < ApplicationController
   private
 
   def full_films_json_response
-    scope.select(:id, :title).map do |film| 
-      Api::V1::FilmPresenter.new(film).to_json.tap do |film_json|
-        if params['store_id']
-          rentals_url = api_v1_store_film_rentals_url(film_id: film.id, store_id: params['store_id'])
-          film_json.merge!(rentals_url: rentals_url)
-        end
+    if params['store_id'] && params[:include]&.include?('rentals')
+      films = scope.includes(:rentals).where(inventories: { "store_id" => params[:store_id] })
+
+      films.map do |film|
+        json_rentals = film.rentals.map { |rental| Api::V1::RentalPresenter.new(rental).to_json(exclude: [:movie_name]) }
+        Api::V1::FilmPresenter.new(film).to_json.merge(rentals: json_rentals)
+      end
+    else
+      scope.select(:id, :title).map do |film|
+        Api::V1::FilmPresenter.new(film).to_json
       end
     end
   end

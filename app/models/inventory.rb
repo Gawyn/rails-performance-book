@@ -1,6 +1,8 @@
 class Inventory < ApplicationRecord
   MAX_AMOUNT_PER_STORE = 10000
 
+  has_many :rentals
+
   belongs_to :film
   belongs_to :store
 
