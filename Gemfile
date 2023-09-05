@@ -64,6 +64,8 @@ gem 'cityhash'
 
 gem 'rack-attack'
 
+gem 'graphql'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -92,3 +94,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "graphiql-rails", group: :development
