@@ -1,0 +1,10 @@
+h1 = @customer.name
+.timeline
+  h2 | Rentals
+  = "#{@customer.rentals_count} rentals"
+  table
+    - @rentals.each do |rental|
+        tr
+          td = rental.inventory.film.title
+          td = rental.rental_date
+          td = rental.returnal_date
