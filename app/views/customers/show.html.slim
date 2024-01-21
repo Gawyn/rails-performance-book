@@ -2,9 +2,19 @@ h1 = @customer.name
 .timeline
   h2 | Rentals
   = "#{@customer.rentals_count} rentals"
-  table
-    - @rentals.each do |rental|
-        tr
-          td = rental.inventory.film.title
-          td = rental.rental_date
-          td = rental.returnal_date
+
+javascript:
+  fetch("/api/v1/customers/1/timeline.json").then(function(r) {
+    r.json().then(function(content) {
+      var table = "<table>"
+      content.forEach((rental) => {
+        table += "<tr>"
+        table += "<td>" + rental.movie_name + "</td>"
+        table += "<td>" + rental.rental_date + "</td>"
+        table += "<td>" + rental.returnal_date + "</td>"
+        table += "</tr>"
+      });
+      var target = document.querySelector(".timeline");
+      target.innerHTML += table;
+    })
+  })
