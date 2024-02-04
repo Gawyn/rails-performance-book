@@ -17,8 +17,18 @@ mysql: &mysql
   username: root
 
 development:
-  <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
-  database: moviestore_development
+  primary: 
+    <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
+    database: moviestore_development
+  shard_one: 
+    <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
+    database: moviestore_development_shard_one
+  shard_two: 
+    <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
+    database: moviestore_development_shard_two
+  shard_three: 
+    <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
+    database: moviestore_development_shard_three
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
