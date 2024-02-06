@@ -1,5 +1,6 @@
 class Rental < ApplicationRecord
   after_create :cache_for_followers
+  after_create :generate_create_audit
 
   belongs_to :customer, counter_cache: true
   belongs_to :inventory
@@ -21,5 +22,9 @@ class Rental < ApplicationRecord
 
       Rails.cache.write(follower.timeline_cache_key, timeline.append(id))
     end
+  end
+
+  def generate_create_audit
+    store.generate_audit('Rental creation', rental.customer)
   end
 end

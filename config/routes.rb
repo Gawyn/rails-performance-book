@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         resources :films, only: [:index] do
           get :rentals
         end
+        resources :audits, only: [:index]
       end
     end
   end

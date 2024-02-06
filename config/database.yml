@@ -23,12 +23,18 @@ development:
   shard_one: 
     <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
     database: moviestore_development_shard_one
+    migrations_paths: db/migrate_shards
+    schema_dump: 'sharded_schema.rb'
   shard_two: 
     <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
     database: moviestore_development_shard_two
+    migrations_paths: db/migrate_shards
+    schema_dump: 'sharded_schema.rb'
   shard_three: 
     <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
     database: moviestore_development_shard_three
+    migrations_paths: db/migrate_shards
+    schema_dump: 'sharded_schema.rb'
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
