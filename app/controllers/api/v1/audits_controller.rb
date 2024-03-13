@@ -1,9 +1,7 @@
 class Api::V1::AuditsController < ApplicationController
   def index
     store = Store.find(params[:store_id])
-    ShardRecord.connected_to(shard: store.shard) do
-      audits = Audit.where(store_id: params[:store_id])
-      render json: audits.all.map { |store| Api::V1::AuditPresenter.new(store).to_json }
-    end
+    audits = Audit.where(store_id: params[:store_id])
+    render json: audits.all.map { |audit| Api::V1::AuditPresenter.new(audit).to_json }
   end
 end
