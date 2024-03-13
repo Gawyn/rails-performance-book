@@ -25,6 +25,6 @@ class Rental < ApplicationRecord
   end
 
   def generate_create_audit
-    store.generate_audit('Rental creation', rental.customer)
+    store.generate_audit('Rental creation', customer)
   end
 end

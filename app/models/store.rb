@@ -17,10 +17,10 @@ class Store < ApplicationRecord
     end
   end
 
-  def generate_audit!(event, actor)
+  def generate_audit(event, actor)
     ActiveRecord::Base.connected_to(role: :writing, shard: shard) do
       Audit.create(
-        event: name,
+        event: event,
         actor: actor,
         store: self
       )
