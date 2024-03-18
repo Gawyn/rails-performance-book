@@ -66,6 +66,8 @@ gem 'rack-attack'
 
 gem 'graphql'
 
+gem 'sidekiq'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

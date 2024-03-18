@@ -13,6 +13,8 @@ module Moviestore
     config.load_defaults 7.0
     config.middleware.use Middleware::ShardSwitcher
 
+    config.active_job.queue_adapter = :sidekiq
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
