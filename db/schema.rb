@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_153237) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_18_193400) do
+  create_table "customer_stats_profiles", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "customer_id"
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
