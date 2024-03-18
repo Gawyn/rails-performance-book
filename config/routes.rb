@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       resources :stores, only: [:show] do
         resources :films, only: [:index] do
           get :rentals
+          resources :rentals, only: [:create]
         end
         resources :audits, only: [:index]
       end
