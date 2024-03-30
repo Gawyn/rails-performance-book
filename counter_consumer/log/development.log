@@ -1,0 +1,130 @@
+I, [2024-03-29T18:22:33.178957 #57864]  INFO -- : 
+@@@                                             @@@@@  @@@
+@@@                                            @@@     @@@
+@@@  @@@    @@@@@@@@@   @@@ @@@   @@@@@@@@@  @@@@@@@@  @@@  @@@@   @@@@@@@@@
+@@@@@@     @@@    @@@   @@@@@    @@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@@@@@    @@@    @@@   @@@     @@@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@  @@@@  @@@@@@@@@@   @@@      @@@@@@@@@@    @@@     @@@  @@@@   @@@@@@@@@@
+
+
+I, [2024-03-29T18:22:33.178996 #57864]  INFO -- : [0;31mUpgrade to Karafka Pro for more features and support: https://karafka.io[0m
+I, [2024-03-29T18:22:33.192898 #57864]  INFO -- : Running in ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [arm64-darwin21]
+I, [2024-03-29T18:22:33.192936 #57864]  INFO -- : Running Karafka 2.3.3 server
+I, [2024-03-29T18:22:33.192943 #57864]  INFO -- : See LICENSE and the LGPL-3.0 for licensing details
+I, [2024-03-29T18:22:39.400344 #57864]  INFO -- : Received SIGINT system signal
+I, [2024-03-29T18:22:39.400588 #57864]  INFO -- : Stopping Karafka server
+I, [2024-03-29T18:22:41.069167 #57864]  INFO -- : Stopped Karafka server
+I, [2024-03-29T18:22:41.069339 #57864]  INFO -- : [db170cd514de] Closing producer
+I, [2024-03-29T18:22:41.069424 #57864]  INFO -- : [db170cd514de] Closing producer took 0.09000000357627869 ms
+I, [2024-03-30T14:22:26.463117 #23472]  INFO -- : 
+@@@                                             @@@@@  @@@
+@@@                                            @@@     @@@
+@@@  @@@    @@@@@@@@@   @@@ @@@   @@@@@@@@@  @@@@@@@@  @@@  @@@@   @@@@@@@@@
+@@@@@@     @@@    @@@   @@@@@    @@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@@@@@    @@@    @@@   @@@     @@@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@  @@@@  @@@@@@@@@@   @@@      @@@@@@@@@@    @@@     @@@  @@@@   @@@@@@@@@@
+
+
+I, [2024-03-30T14:22:26.463170 #23472]  INFO -- : [0;31mUpgrade to Karafka Pro for more features and support: https://karafka.io[0m
+I, [2024-03-30T14:22:26.478123 #23472]  INFO -- : Running in ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [arm64-darwin21]
+I, [2024-03-30T14:22:26.478148 #23472]  INFO -- : Running Karafka 2.3.3 server
+I, [2024-03-30T14:22:26.478155 #23472]  INFO -- : See LICENSE and the LGPL-3.0 for licensing details
+E, [2024-03-30T14:22:26.512214 #23472] ERROR -- : rdkafka: [thrd:127.0.0.1:9092/bootstrap]: 127.0.0.1:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+E, [2024-03-30T14:22:26.512291 #23472] ERROR -- : librdkafka internal error occurred: Local: Broker transport failure (transport)
+E, [2024-03-30T14:22:26.512315 #23472] ERROR -- : /Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:574:in `rd_kafka_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:574:in `block in events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/native_kafka.rb:64:in `with_inner'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:573:in `events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/client.rb:327:in `events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/listener.rb:149:in `fetch_loop'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/listener.rb:68:in `call'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/helpers/async.rb:37:in `block (2 levels) in async_call'
+E, [2024-03-30T14:22:26.512405 #23472] ERROR -- : librdkafka internal error occurred: Local: All broker connections are down (all_brokers_down)
+E, [2024-03-30T14:22:26.512414 #23472] ERROR -- : /Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:574:in `rd_kafka_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:574:in `block in events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/native_kafka.rb:64:in `with_inner'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:573:in `events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/client.rb:327:in `events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/listener.rb:149:in `fetch_loop'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/listener.rb:68:in `call'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/helpers/async.rb:37:in `block (2 levels) in async_call'
+E, [2024-03-30T14:22:28.522629 #23472] ERROR -- : librdkafka internal error occurred: Local: Broker transport failure (transport)
+E, [2024-03-30T14:22:28.522891 #23472] ERROR -- : /Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:574:in `rd_kafka_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:574:in `block in events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/native_kafka.rb:64:in `with_inner'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-rdkafka-0.14.10/lib/rdkafka/consumer.rb:573:in `events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/client.rb:327:in `events_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/client.rb:71:in `batch_poll'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/listener.rb:265:in `poll_and_remap_messages'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/listener.rb:172:in `block in fetch_loop'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-core-2.3.0/lib/karafka/core/monitoring/notifications.rb:122:in `measure_time_taken'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-core-2.3.0/lib/karafka/core/monitoring/notifications.rb:98:in `instrument'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-core-2.3.0/lib/karafka/core/monitoring/monitor.rb:34:in `instrument'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/listener.rb:162:in `fetch_loop'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/connection/listener.rb:68:in `call'
+/Users/cplanas/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/karafka-2.3.3/lib/karafka/helpers/async.rb:37:in `block (2 levels) in async_call'
+E, [2024-03-30T14:22:28.522989 #23472] ERROR -- : rdkafka: [thrd:127.0.0.1:9092/bootstrap]: 127.0.0.1:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT, 1 identical error(s) suppressed)
+I, [2024-03-30T14:22:29.854476 #23472]  INFO -- : Received SIGINT system signal
+I, [2024-03-30T14:22:29.854675 #23472]  INFO -- : Stopping Karafka server
+I, [2024-03-30T14:22:31.204964 #23472]  INFO -- : Stopped Karafka server
+I, [2024-03-30T14:22:31.205364 #23472]  INFO -- : [621ebd7486d5] Closing producer
+I, [2024-03-30T14:22:31.205558 #23472]  INFO -- : [621ebd7486d5] Closing producer took 0.17000000923871994 ms
+I, [2024-03-30T14:24:16.724125 #24750]  INFO -- : 
+@@@                                             @@@@@  @@@
+@@@                                            @@@     @@@
+@@@  @@@    @@@@@@@@@   @@@ @@@   @@@@@@@@@  @@@@@@@@  @@@  @@@@   @@@@@@@@@
+@@@@@@     @@@    @@@   @@@@@    @@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@@@@@    @@@    @@@   @@@     @@@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@  @@@@  @@@@@@@@@@   @@@      @@@@@@@@@@    @@@     @@@  @@@@   @@@@@@@@@@
+
+
+I, [2024-03-30T14:24:16.724162 #24750]  INFO -- : [0;31mUpgrade to Karafka Pro for more features and support: https://karafka.io[0m
+I, [2024-03-30T14:24:16.738881 #24750]  INFO -- : Running in ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [arm64-darwin21]
+I, [2024-03-30T14:24:16.738913 #24750]  INFO -- : Running Karafka 2.3.3 server
+I, [2024-03-30T14:24:16.738919 #24750]  INFO -- : See LICENSE and the LGPL-3.0 for licensing details
+I, [2024-03-30T14:25:31.181393 #24750]  INFO -- : [0062168af7cb] Polled 1 messages in 1012.1319999992847ms
+I, [2024-03-30T14:25:31.182657 #24750]  INFO -- : [979c01305822] Consume job for RentalsConsumer on rentals/0 started
+I, [2024-03-30T14:25:31.190276 #24750]  INFO -- : [979c01305822] Consume job for RentalsConsumer on rentals/0 finished in 7.489000000059605ms
+I, [2024-03-30T14:27:05.810881 #24750]  INFO -- : Received SIGINT system signal
+I, [2024-03-30T14:27:05.811453 #24750]  INFO -- : Stopping Karafka server
+I, [2024-03-30T14:27:06.612893 #24750]  INFO -- : [979c01305822] Shutdown job for RentalsConsumer on rentals/0 started
+I, [2024-03-30T14:27:06.613330 #24750]  INFO -- : [979c01305822] Shutdown job for RentalsConsumer on rentals/0 finished in 0.10299999266862869ms
+I, [2024-03-30T14:27:07.580507 #24750]  INFO -- : Stopped Karafka server
+I, [2024-03-30T14:27:07.581006 #24750]  INFO -- : [5de6333b8436] Closing producer
+I, [2024-03-30T14:27:07.581273 #24750]  INFO -- : [5de6333b8436] Closing producer took 0.34299999475479126 ms
+I, [2024-03-30T14:27:09.510058 #24976]  INFO -- : 
+@@@                                             @@@@@  @@@
+@@@                                            @@@     @@@
+@@@  @@@    @@@@@@@@@   @@@ @@@   @@@@@@@@@  @@@@@@@@  @@@  @@@@   @@@@@@@@@
+@@@@@@     @@@    @@@   @@@@@    @@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@@@@@    @@@    @@@   @@@     @@@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@  @@@@  @@@@@@@@@@   @@@      @@@@@@@@@@    @@@     @@@  @@@@   @@@@@@@@@@
+
+
+I, [2024-03-30T14:27:09.510094 #24976]  INFO -- : [0;31mUpgrade to Karafka Pro for more features and support: https://karafka.io[0m
+I, [2024-03-30T14:27:09.525293 #24976]  INFO -- : Running in ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [arm64-darwin21]
+I, [2024-03-30T14:27:09.525324 #24976]  INFO -- : Running Karafka 2.3.3 server
+I, [2024-03-30T14:27:09.525331 #24976]  INFO -- : See LICENSE and the LGPL-3.0 for licensing details
+I, [2024-03-30T14:27:11.429043 #24976]  INFO -- : Received SIGINT system signal
+I, [2024-03-30T14:27:11.429341 #24976]  INFO -- : Stopping Karafka server
+I, [2024-03-30T14:27:12.674967 #24976]  INFO -- : Stopped Karafka server
+I, [2024-03-30T14:27:12.675436 #24976]  INFO -- : [3c9e572c313d] Closing producer
+I, [2024-03-30T14:27:12.675600 #24976]  INFO -- : [3c9e572c313d] Closing producer took 0.24000000208616257 ms
+I, [2024-03-30T14:29:47.306428 #25201]  INFO -- : 
+@@@                                             @@@@@  @@@
+@@@                                            @@@     @@@
+@@@  @@@    @@@@@@@@@   @@@ @@@   @@@@@@@@@  @@@@@@@@  @@@  @@@@   @@@@@@@@@
+@@@@@@     @@@    @@@   @@@@@    @@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@@@@@    @@@    @@@   @@@     @@@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@  @@@@  @@@@@@@@@@   @@@      @@@@@@@@@@    @@@     @@@  @@@@   @@@@@@@@@@
+
+
+I, [2024-03-30T14:29:47.306467 #25201]  INFO -- : [0;31mUpgrade to Karafka Pro for more features and support: https://karafka.io[0m
+I, [2024-03-30T14:29:47.320904 #25201]  INFO -- : Running in ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [arm64-darwin21]
+I, [2024-03-30T14:29:47.320936 #25201]  INFO -- : Running Karafka 2.3.3 server
+I, [2024-03-30T14:29:47.320947 #25201]  INFO -- : See LICENSE and the LGPL-3.0 for licensing details
+I, [2024-03-30T14:30:27.988820 #25201]  INFO -- : Received SIGINT system signal
+I, [2024-03-30T14:30:27.989130 #25201]  INFO -- : Stopping Karafka server
+I, [2024-03-30T14:30:29.333745 #25201]  INFO -- : Stopped Karafka server
+I, [2024-03-30T14:30:29.333953 #25201]  INFO -- : [9f138b500646] Closing producer
+I, [2024-03-30T14:30:29.334040 #25201]  INFO -- : [9f138b500646] Closing producer took 0.11799999326467514 ms

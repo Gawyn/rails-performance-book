@@ -106,6 +106,7 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
+    ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
     graphiql-rails (1.9.0)
@@ -140,6 +141,22 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    karafka (2.3.3)
+      karafka-core (>= 2.3.0, < 2.4.0)
+      waterdrop (>= 2.6.12, < 3.0.0)
+      zeitwerk (~> 2.3)
+    karafka-core (2.3.0)
+      karafka-rdkafka (>= 0.14.8, < 0.15.0)
+    karafka-rdkafka (0.14.10)
+      ffi (~> 1.15)
+      mini_portile2 (~> 2.6)
+      rake (> 12)
+    karafka-web (0.8.2)
+      erubi (~> 1.4)
+      karafka (>= 2.3.0, < 2.4.0)
+      karafka-core (>= 2.3.0, < 2.4.0)
+      roda (~> 3.68, >= 3.69)
+      tilt (~> 2.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -153,6 +170,7 @@ GEM
     memory_profiler (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.5)
     minitest (5.22.0)
     msgpack (1.7.2)
     mysql2 (0.5.5)
@@ -222,6 +240,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    roda (3.78.0)
+      rack
     rubyzip (2.3.2)
     selenium-webdriver (4.17.0)
       base64 (~> 0.2)
@@ -258,6 +278,9 @@ GEM
       concurrent-ruby (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    waterdrop (2.6.14)
+      karafka-core (>= 2.2.3, < 3.0.0)
+      zeitwerk (~> 2.3)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -293,6 +316,8 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
+  karafka
+  karafka-web (~> 0.8.2)
   memory_profiler
   mysql2
   pg (~> 1.4)

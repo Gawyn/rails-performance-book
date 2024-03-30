@@ -1,6 +1,8 @@
 class Rental < ApplicationRecord
   after_create :cache_for_followers
   after_create :generate_create_audit
+  after_save :produce_kafka_message
+  after_save :recalculate_customer_stats_profile
 
   belongs_to :customer, counter_cache: true
   belongs_to :inventory
@@ -14,6 +16,14 @@ class Rental < ApplicationRecord
   end
 
   private
+
+  def recalculate_customer_stats_profile
+    RecalculateCustomerStatsProfileJob.perform_later(customer_id)
+  end
+
+  def produce_kafka_message
+    Karafka.producer.produce_sync(topic: 'rentals', payload: {rental: Api::V1::RentalPresenter.new(self).as_json}.to_json)
+  end
 
   def cache_for_followers
     follower_ids = Following.where(followed_id: customer_id).pluck(:follower_id)

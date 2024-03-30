@@ -68,6 +68,8 @@ gem 'graphql'
 
 gem 'sidekiq'
 
+gem 'karafka'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -97,3 +99,5 @@ group :test do
   gem "webdrivers"
 end
 gem "graphiql-rails", group: :development
+
+gem "karafka-web", "~> 0.8.2"
