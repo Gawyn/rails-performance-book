@@ -21,6 +21,7 @@ task benchmark_preload_complex: :environment do
   report = MemoryProfiler.report do
     h[:complex][:n_plus_1] = Benchmark.measure do
       stores.each do |store|
+        p "Processing record #{store.id}..."
         store.films.map { |f| f.language.name }
       end
     end
@@ -32,7 +33,7 @@ task benchmark_preload_complex: :environment do
   report = MemoryProfiler.report do
     h[:complex][:preload] = Benchmark.measure do
       stores.each do |store|
-        p store.id
+        p "Processing record #{store.id}..."
         store.films.preload(:language).map { |f| f.language.name }
       end
     end
@@ -44,6 +45,7 @@ task benchmark_preload_complex: :environment do
   report = MemoryProfiler.report do
     h[:complex][:eager_load] = Benchmark.measure do
       stores.each do |store|
+        p "Processing record #{store.id}..."
         store.films.eager_load(:language).map { |f| f.language.name }
       end
     end
