@@ -34,8 +34,11 @@ pp "Creating 10 stores"
   Inventory.insert_all attrs
 end
 
-['Yukihiro Matsumoto', 'David Heinemeier Hansson', 'Aaron Patterson', 'Eileen Uchitelle', 'Xavier Noria', 
- 'Akira Matoba', 'Sandi Metz', 'Penelope Phippen', 'Rafael França', 'Brandon Weaver'].each_with_index do |name, i|
+[
+  'Yukihiro Matsumoto', 'Enthusiastic Rubyist', 'Experienced Rubyist',
+  'Ruby Lover', 'Newbie Rubyist', 'DuckTyping Fan',
+  'Rails Expert', 'Fullstack Developer', 'Hobbyist Programmer', 'MVC Guru'
+].each_with_index do |name, i|
    customer = Customer.new(id: i+1, name: name)
    customer.save
    store = Store.find(i+1)
