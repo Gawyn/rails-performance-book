@@ -23,11 +23,11 @@ class Api::V1::Presenter
     cached_object ||= begin
       object = Rails.cache.fetch(cache_key)
 
-      return object.tap { |h| h.delete(:expiring_key) } if object && object[:expiring_key] == expiration_key
+      return object.tap { |h| h.delete(:expiration_key) } if object && object[:expiration_key] == expiration_key
 
-      as_json.merge(expiring_key: expiration_key).tap do |object|
+      as_json.merge(expiration_key: expiration_key).tap do |object|
         Rails.cache.write(cache_key, object)
-        object.delete(:expiring_key)
+        object.delete(:expiration_key)
       end
     end
   end
