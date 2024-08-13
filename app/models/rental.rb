@@ -1,7 +1,7 @@
 class Rental < ApplicationRecord
   after_create :cache_for_followers
   after_create :generate_create_audit
-  after_save :produce_kafka_message
+  # after_save :produce_kafka_message
   after_save :recalculate_customer_stats_profile
 
   belongs_to :customer, counter_cache: true

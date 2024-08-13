@@ -70,6 +70,8 @@ gem 'sidekiq'
 
 gem 'karafka'
 
+gem 'whenever'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
