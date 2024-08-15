@@ -5,20 +5,23 @@ pp 'Destroying previous DB'
 
 pp 'Creating films'
 data = CSV.read('lib/data.csv')
-long_text = File.open('lib/assets/long_text.txt').read[0..64000]
 n = data.count
 language_i = 1
+language_ids = {}
 data.each_with_index do |content, i|
   title, language_name = content
   puts "Creating film #{i+1} of #{n}"
-  language = Language.where(name: language_name).first
-  unless language
+  language_id = language_ids[language_name]
+  unless language_id
     language = Language.new(id: language_i, name: language_name)
     language.save
+    language_ids[language_name] = language_i
     language_i += 1
   end
-  Film.new(id: i + 1, title: title, language: language, big_text_column: long_text).save
+  Film.new(id: i + 1, title: title, language_id: language_id).save
 end
+long_text = File.open('lib/assets/long_text.txt').read[0..64000]
+Film.update_all(big_text_column: long_text)
 
 pp "Creating 10 stores"
 
