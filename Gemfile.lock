@@ -366,7 +366,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 3.1.3p185
+   ruby 3.3.4p94
 
 BUNDLED WITH
    2.3.7
