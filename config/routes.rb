@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :customers, only: :show
   resources :films, only: [:index, :show, :create]
-  resources :stores, only: [:show]
+  resources :stores, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do

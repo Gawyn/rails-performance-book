@@ -5,6 +5,6 @@ class StoresController < ApplicationController
   end
 
   def index
-    @films = Film.all
+    @stores = Store.all
   end
 end
