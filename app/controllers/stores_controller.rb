@@ -3,4 +3,8 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
     @films = @store.films
   end
+
+  def index
+    @stores = Store.all
+  end
 end

@@ -1,0 +1,6 @@
+table
+  - @stores.each do |store|
+    tr
+      td = store.id
+      td = link_to store.name, store_path(store)
+  
