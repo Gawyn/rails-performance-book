@@ -58,7 +58,7 @@ end
 end
 
 1000.times do
-  Customer.create(name: "Dummy Costumer")
+  Customer.create(name: "Dummy Customer")
 end
 
 # Matz follows everyone
