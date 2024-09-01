@@ -5,6 +5,7 @@ class StoresController < ApplicationController
   end
 
   def index
+    response.headers["Cache-Control"] = "max-age=60"
     @stores = Store.all
   end
 end
