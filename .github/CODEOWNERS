@@ -1,5 +1,3 @@
-app/controllers/admin_controller.rb @amikhaylov
-app/controllers/admin @amikhaylov
 app/controllers/* @Gawyn
 app/models/* @Gawyn
-test/ @abellonch
+test/ @jlanta
