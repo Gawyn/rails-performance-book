@@ -54,8 +54,9 @@ end
    end
 end
 
-1000.times do
-  Customer.create(name: "Dummy Customer")
+max_customer_id = Customer.maximum(:id) || 0
+1000.times do |i|
+  Customer.create(id: max_customer_id + i + 1, name: "Dummy Customer")
 end
 
 # Matz follows everyone
