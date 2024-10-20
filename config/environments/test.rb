@@ -57,4 +57,9 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  config.identity_cache_store = :mem_cache_store, {
+    expires_in: 6.hours.to_i, # in case of network errors when sending a cache invalidation
+    failover: false, # avoids more cache consistency issues
+  }
 end

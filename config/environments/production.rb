@@ -90,4 +90,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.identity_cache_store = :mem_cache_store, {
+    expires_in: 6.hours.to_i, # in case of network errors when sending a cache invalidation
+    failover: false, # avoids more cache consistency issues
+  }
 end
