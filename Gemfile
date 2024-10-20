@@ -72,6 +72,8 @@ gem 'karafka'
 
 gem 'whenever'
 
+gem 'packwerk'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
