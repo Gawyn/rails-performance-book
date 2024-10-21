@@ -22,5 +22,13 @@ module Moviestore
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    Dir["./components/*"].each do |path|
+      next unless File.directory?(path)
+      component = path.split("/").last
+
+      config.autoload_paths += Dir[Rails.root.join('components', component, 'app', '**')]
+      config.autoload_paths += Dir[Rails.root.join('components', component, 'public')]
+    end
   end
 end

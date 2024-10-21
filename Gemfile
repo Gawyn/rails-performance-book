@@ -73,6 +73,9 @@ gem 'karafka'
 gem 'whenever'
 
 gem 'packwerk'
+gem 'graphwerk', group: %i[development test]
+gem 'packwerk-extensions'
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"

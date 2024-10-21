@@ -4,7 +4,6 @@ class Store < ApplicationRecord
 
   has_many :inventories
   has_many :films, through: :inventories
-  has_many :audits
   belongs_to :most_rented_film, class_name: 'Film'
 
   def set_most_rented_film!
@@ -13,13 +12,13 @@ class Store < ApplicationRecord
 
   def audits
     ActiveRecord::Base.connected_to(role: :writing, shard: shard) do
-      Audit.where(store_id: self.id)
+      AuditInterface.where(store_id: self.id)
     end
   end
 
   def generate_audit(event, actor)
     ActiveRecord::Base.connected_to(role: :writing, shard: shard) do
-      Audit.create(
+      AuditInterface.create(
         event: event,
         actor: actor,
         store: self
