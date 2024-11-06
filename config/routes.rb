@@ -4,6 +4,9 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Karafka::Web::App, at: '/karafka'
   mount Sidekiq::Web => "/sidekiq"
+  if !Rails.env.production? # Replace this with a user role check
+    mount Flipper::UI.app(Flipper) => '/flipper'
+  end
 
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"

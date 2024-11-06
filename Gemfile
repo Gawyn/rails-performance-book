@@ -76,6 +76,9 @@ gem 'packwerk'
 gem 'graphwerk', group: %i[development test]
 gem 'packwerk-extensions'
 
+gem 'flipper'
+gem 'flipper-active_record'
+gem 'flipper-ui'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
