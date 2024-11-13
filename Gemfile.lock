@@ -114,6 +114,12 @@ GEM
     constant_resolver (0.2.0)
     crass (1.0.6)
     dalli (3.2.8)
+    datadog (2.5.0)
+      datadog-ruby_core_source (~> 3.3)
+      libdatadog (~> 13.1.0.1.0)
+      libddwaf (~> 1.15.0.0.0)
+      msgpack
+    datadog-ruby_core_source (3.3.6)
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
@@ -196,6 +202,9 @@ GEM
       karafka-core (>= 2.3.0, < 2.4.0)
       roda (~> 3.68, >= 3.69)
       tilt (~> 2.0)
+    libdatadog (13.1.0.1.0)
+    libddwaf (1.15.0.0.0-arm64-darwin)
+      ffi (~> 1.0)
     logger (1.6.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -394,6 +403,7 @@ DEPENDENCIES
   capybara
   cityhash
   dalli
+  datadog
   debug
   devise
   flipper
