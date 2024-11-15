@@ -1,3 +1,5 @@
+require 'net/http'
+
 desc 'Seed DD'
 
 def call_url(url)
