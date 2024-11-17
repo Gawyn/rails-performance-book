@@ -1,6 +1,4 @@
 class Api::V1::CustomerPresenter
-  private
-
   def to_json
     {
       id: resource.id,

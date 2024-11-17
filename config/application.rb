@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require_relative '../app/middleware/datadog_middleware'
 require_relative '../app/middleware/shard_switcher'
 
 # Require the gems listed in Gemfile, including any gems
@@ -12,6 +13,7 @@ module Moviestore
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.middleware.use Middleware::ShardSwitcher
+    config.middleware.use Middleware::DatadogMiddleware
 
     config.active_job.queue_adapter = :sidekiq
 

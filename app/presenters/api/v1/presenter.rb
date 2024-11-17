@@ -6,15 +6,17 @@ class Api::V1::Presenter
   end
 
   def to_json(exclude: [])
-    return nil unless resource
+    Datadog::Tracing.trace('presenter.to_json', service: 'presentation-layer', resource: resource&.class&.to_s) do
+      return nil unless resource
 
-    json_object = cached_object
+      json_object = cached_object
 
-    exclude.each do |excluded_attr|
-      json_object.delete(excluded_attr)
+      exclude.each do |excluded_attr|
+        json_object.delete(excluded_attr)
+      end
+
+      json_object
     end
-
-    json_object
   end
 
   private
