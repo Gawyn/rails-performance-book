@@ -16,6 +16,7 @@ task seed_datadog: :environment do
     call_url "http://localhost:3000/api/v1/stores/#{store_id}/audits"
     call_url "http://localhost:3000/api/v1/films"
     call_url "http://localhost:3000/films"
+    call_url "http://localhost:3000/customers"
     call_url "http://localhost:3000/customers/#{customer_id}"
   end
 end
