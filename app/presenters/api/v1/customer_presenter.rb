@@ -1,5 +1,7 @@
-class Api::V1::CustomerPresenter
-  def to_json
+class Api::V1::CustomerPresenter < Api::V1::Presenter
+  private
+
+  def as_json
     {
       id: resource.id,
       name: resource.name,

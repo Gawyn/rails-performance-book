@@ -81,6 +81,7 @@ gem 'flipper-active_record'
 gem 'flipper-ui'
 
 gem 'datadog', require: 'datadog/auto_instrument'
+gem 'dogstatsd-ruby'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

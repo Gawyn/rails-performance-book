@@ -130,6 +130,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dogstatsd-ruby (5.6.3)
     drb (2.2.1)
     erubi (1.13.0)
     ffi (1.17.0-arm64-darwin)
@@ -406,6 +407,7 @@ DEPENDENCIES
   datadog
   debug
   devise
+  dogstatsd-ruby
   flipper
   flipper-active_record
   flipper-ui

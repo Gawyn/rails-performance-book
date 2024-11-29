@@ -6,6 +6,7 @@ class Api::V1::Presenter
   end
 
   def to_json(exclude: [])
+    return nil unless resource
     Datadog::Tracing.trace('presenter.to_json', service: 'presentation-layer', resource: resource&.class&.to_s) do
       return nil unless resource
 
@@ -36,5 +37,9 @@ class Api::V1::Presenter
 
   def cache_key
     "#{resource.class}-#{resource.id}"
+  end
+
+  def expiration_key
+    resource.updated_at
   end
 end
