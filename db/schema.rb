@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_18_193400) do
+ActiveRecord::Schema[8.0].define(version: 2022_08_19_212767) do
   create_table "customer_stats_profiles", charset: "utf8mb3", force: :cascade do |t|
     t.integer "customer_id"
     t.text "data"
@@ -22,8 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_18_193400) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rental_counter"
-    t.integer "rentals_count"
   end
 
   create_table "films", charset: "utf8mb3", force: :cascade do |t|
@@ -32,9 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_18_193400) do
     t.datetime "updated_at", null: false
     t.integer "language_id"
     t.text "big_text_column"
-    t.index ["created_at", "id"], name: "index_films_on_created_at_and_id"
-    t.index ["language_id", "title"], name: "index_films_on_language_id_and_title"
-    t.index ["title"], name: "index_films_on_title"
   end
 
   create_table "followings", charset: "utf8mb3", force: :cascade do |t|
@@ -70,7 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_18_193400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.integer "most_rented_film_id"
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
@@ -84,5 +78,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_18_193400) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end
