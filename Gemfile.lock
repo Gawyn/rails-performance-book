@@ -215,6 +215,10 @@ GEM
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
+    solid_cache (1.0.7)
+      activejob (>= 7.2)
+      activerecord (>= 7.2)
+      railties (>= 7.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -275,6 +279,7 @@ DEPENDENCIES
   rails (~> 8.0)
   selenium-webdriver
   slim
+  solid_cache (~> 1.0)
   sprockets-rails
   stimulus-rails
   turbo-rails
