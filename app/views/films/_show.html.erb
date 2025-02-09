@@ -1,0 +1,11 @@
+<% cache film do %>
+  <div class="film">
+    <h2><%= film.title %></h2>
+    <p>
+      <%= "Language: #{film.language.name}" %>
+    </p>
+    <p>
+      <%= "Available at #{film.stores.pluck(:name).join(', ')}" %>
+    </p>
+  </div>
+<% end %>

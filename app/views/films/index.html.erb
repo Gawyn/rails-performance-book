@@ -1,0 +1,5 @@
+<% cache @films do %>
+  <% @films.each do |film| %>
+    <%= render "films/show", film: film %>
+  <% end %>
+<% end %>
