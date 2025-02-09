@@ -33,6 +33,6 @@ class Api::V1::FilmsController < ApplicationController
       aux = Film.where(language_id: language.id).order("title asc")
     end
 
-    aux.select(:id, :title)
+    aux.select(:id, :title, :updated_at)
   end
 end
