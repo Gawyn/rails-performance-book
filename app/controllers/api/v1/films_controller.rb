@@ -4,7 +4,11 @@ class Api::V1::FilmsController < ApplicationController
   end
 
   def index
-    render json: scope.map { |film| Api::V1::FilmPresenter.new(film).to_json }
+    expiration_key = "#{Film.count}-#{Film.maximum(:updated_at)}"
+    aux = cached_response(expiration_key) do
+      scope.map { |film| Api::V1::FilmPresenter.new(film).to_json }
+    end
+    render json: aux
   end
 
   def rentals

@@ -5,11 +5,10 @@ class Api::V1::CustomersController < ApplicationController
 
   def timeline
     customer = Customer.find(params[:customer_id])
-    rentals = Rental.where(customer_id: customer.followings.pluck(:followed_id))
-      .order(created_at: :desc).limit(10)
-      .includes(inventory: :film)
-
-    render json: rentals.map { |rental| Api::V1::RentalPresenter.new(rental).to_json }
+    rentals = Rental.where(id: Rails.cache.read(customer.timeline_cache_key))
+    render json: rentals.map do |rental| 
+      Api::V1::RentalPresenter.new(rental).to_json
+    end
   end
 
   def rentals

@@ -27,8 +27,6 @@ class Api::V1::Presenter
   end
 
   def expiration_key
-    p resource
-    p resource.class
     resource.updated_at
   end
 end
