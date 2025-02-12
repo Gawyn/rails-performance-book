@@ -1,8 +1,12 @@
 class Film < ApplicationRecord
+  include IdentityCache
+
   after_save :write_cache
 
   has_many :inventories
+
   has_many :stores, through: :inventories
+
   belongs_to :language
 
   private

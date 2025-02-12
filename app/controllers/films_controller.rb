@@ -8,8 +8,8 @@ class FilmsController < ApplicationController
   end
 
   def create
-    @film = Film.new params[:film]
-    @film.save
+    @film = Film.create params[:film]
+    expire_page controller: 'home', action: "home"
     redirect_to film_path(@film)
   end
 end

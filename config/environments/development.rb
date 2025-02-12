@@ -67,4 +67,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.identity_cache_store = :mem_cache_store, {
+    expires_in: 6.hours.to_i,
+    failover: false,
+  }
 end
