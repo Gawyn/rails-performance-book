@@ -42,9 +42,22 @@ class Api::V1::FilmsController < ApplicationController
 
   def cached_index_response
     expiration_key = "#{Film.count}-#{Film.maximum(:updated_at)}"
-    aux = cached_response(expiration_key) do
-      scope.map { |film| Api::V1::FilmPresenter.new(film).to_json }
+    cached_response(expiration_key) do
+      scope.map { |film| decorated_film(film) }.to_json
     end
+  end
+
+  def decorated_film(film)
+    presented_film = Api::V1::FilmPresenter.new(film).to_json
+
+    if params['store_id']
+      rentals_url = api_v1_store_film_rentals_url(
+        film_id: film.id, store_id: params['store_id']
+      )
+      presented_film[:rental_url] = rentals_url
+    end
+
+    presented_film
   end
 
   def json_response
