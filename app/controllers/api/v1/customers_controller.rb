@@ -1,6 +1,6 @@
 class Api::V1::CustomersController < ApplicationController
   def index
-    render json: Customer.all.map { |film| Api::V1::CustomerPresenter.new(film).to_json }
+    render json: Customer.all.map { |c| Api::V1::CustomerPresenter.new(c).to_json }
   end
 
   def timeline
