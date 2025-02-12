@@ -36,6 +36,8 @@ gem "actionpack-page_caching"
 gem 'identity_cache'
 gem 'dalli'
 
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

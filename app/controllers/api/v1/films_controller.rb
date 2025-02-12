@@ -28,18 +28,11 @@ class Api::V1::FilmsController < ApplicationController
   end
 
   def scope
-    aux = if params[:store_id]
-      @store = Store.find(params[:store_id])
-      @store.films
-    else
-      Film
-    end
-
     if params[:language]
       language = Language.where(name: params[:language]).first
-      aux = Film.where(language_id: language.id).order("title asc")
-    end
-
-    aux.select(:id, :title, :updated_at)
+      Film.where(language_id: language.id).order("title asc")
+    else
+      Film
+    end.page(params[:page]).per(params[:per_page])
   end
 end
