@@ -8,7 +8,8 @@ class Api::V1::CustomerPresenter
   def to_json
     {
       id: resource.id,
-      name: resource.name
+      name: resource.name,
+      rental_counter: resource.rentals.count
     }
   end
 end
