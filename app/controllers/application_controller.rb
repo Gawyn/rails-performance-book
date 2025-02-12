@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include CursorBasedPaginationSupport
+
   private
 
   def cached_response(expiration_key)

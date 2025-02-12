@@ -4,7 +4,27 @@ class Api::V1::FilmsController < ApplicationController
   include Kaminari::Helpers::UrlHelper
 
   def lean
-    render json: json_response
+    if params[:cbp]
+      results = cbp_scope(Film, params[:cursor])
+      response = {
+        films: results.pluck(:id, :title).map { |m| {id: m.first, title: m.last} }
+      }
+
+      if results.count > 0
+        response[:previous_page] = api_v1_films_url(
+          cbp: true,
+          cursor: generate_cursor('id', results&.first&.id, '<')
+        )
+        response[:next_page] = api_v1_films_url(
+          cbp: true,
+          cursor: generate_cursor('id', results&.last&.id, '>')
+        )
+      end
+
+      render json: response
+    else
+      render json: json_response
+    end
   end
 
   def index
@@ -28,15 +48,39 @@ class Api::V1::FilmsController < ApplicationController
   end
 
   def json_response
-    Film.pluck(:id, :title).map { |m| {id: m.first, title: m.last} }.to_json
+    films = paginated_scope.pluck(:id, :title).map { |m| {id: m.first, title: m.last} }
+    # If you didn't complete the Data Access chapter, this would look like:
+    # paginated_scope.map { |m| {id: m.id, title: m.title}.to_json
+
+    {films: films}.merge(paginated_scope_decorations).to_json
+  end
+
+  def paginated_scope
+    Film.page(params[:page]).per(params[:per_page])
   end
 
   def scope
-    if params[:language]
-      language = Language.where(name: params[:language]).first
-      Film.where(language_id: language.id).order("title asc")
+    aux = if params[:store_id]
+      @store = Store.find(params[:store_id])
+      @store.films
     else
       Film
-    end.page(params[:page]).per(params[:per_page])
+    end
+
+    if params[:language]
+      language = Language.where(name: params[:language]).first
+      aux = Film.where(language_id: language.id).order("title asc")
+    end
+
+    aux.select(:id, :title, :updated_at)
+  end
+
+  def paginated_scope_decorations
+    {
+      count: paginated_scope.total_count,
+      previous_page: prev_page_url(paginated_scope),
+      next_page: next_page_url(paginated_scope),
+      total_pages: paginated_scope.total_pages
+    }
   end
 end
