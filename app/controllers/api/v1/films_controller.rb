@@ -43,8 +43,40 @@ class Api::V1::FilmsController < ApplicationController
   def cached_index_response
     expiration_key = "#{Film.count}-#{Film.maximum(:updated_at)}"
     cached_response(expiration_key) do
-      scope.map { |film| decorated_film(film) }.to_json
+      full_films_json_response
+      # If you want to see the version with the rental link
+      # scope.map { |film| decorated_film(film) }.to_json
+      #
+      # Or if you want the version you get at the end of the Caching chapter:
+      # scope.map { |film| Api::V1::FilmPresenter.new(film).to_json }
     end
+  end
+
+  def full_films_json_response
+    if params['store_id']
+      films = scope.includes(:rentals)
+        .where(inventories: { "store_id" => params[:store_id] })
+
+      films.map do |film|
+        decorated_film_with_embedded_rentals(film)
+    else
+      scope.select(:id, :title).map do |film| 
+        Api::V1::FilmPresenter.new(film).to_json
+      end
+    end
+  end
+
+  def decorated_film_with_embedded_rentals
+    presented_film = Api::V1::FilmPresenter.new(film).to_json
+
+    if params['store_id']
+      json_rentals = film.rentals.map do |rental| 
+        Api::V1::RentalPresenter.new(rental).to_json
+      end
+      presented_film[:rentals] = json_rentals
+    end
+
+    presented_film
   end
 
   def decorated_film(film)

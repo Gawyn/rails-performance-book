@@ -5,7 +5,7 @@ class Api::V1::Presenter
     @resource = resource
   end
 
-  def to_json
+  def to_json(exclude: [])
     return nil unless resource
 
     object = Rails.cache.fetch(cache_key)
@@ -17,6 +17,10 @@ class Api::V1::Presenter
     as_json.merge(expiration_key: expiration_key).tap do |object|
       Rails.cache.write(cache_key, object)
       object.delete(:expiring_key)
+
+      exclude.each do |excluded_attr|
+        object.delete(excluded_attr)
+      end
     end
   end
 

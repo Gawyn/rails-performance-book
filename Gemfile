@@ -38,6 +38,8 @@ gem 'dalli'
 
 gem 'kaminari'
 
+gem 'graphql'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -91,3 +93,4 @@ group :test do
 end
 
 gem "solid_cache", "~> 1.0"
+gem "graphiql-rails", group: :development

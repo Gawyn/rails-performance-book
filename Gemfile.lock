@@ -114,8 +114,15 @@ GEM
       warden (~> 1.2.3)
     drb (2.2.1)
     erubi (1.13.0)
+    fiber-storage (1.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    graphiql-rails (1.10.1)
+      railties
+    graphql (2.4.9)
+      base64
+      fiber-storage
+      logger
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     identity_cache (1.6.3)
@@ -295,6 +302,8 @@ DEPENDENCIES
   dalli
   debug
   devise
+  graphiql-rails
+  graphql
   identity_cache
   importmap-rails
   jbuilder
