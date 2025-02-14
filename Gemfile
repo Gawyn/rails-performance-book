@@ -93,4 +93,7 @@ group :test do
 end
 
 gem "solid_cache", "~> 1.0"
+
 gem "graphiql-rails", group: :development
+
+gem "solid_queue", "~> 1.1"
