@@ -17,8 +17,21 @@ mysql: &mysql
   username: root
 
 development:
-  <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
-  database: moviestore_development
+  primary:
+    <<: <%= "*" + ENV.fetch('DB_MODE', 'mysql') %>
+    database: moviestore_development
+  shard_one:
+    <<: <%= "*" + ENV.fetch('DB_MODE', 'mysql') %>
+    database: moviestore_development_shard_one
+    migrations_paths: db/migrate_shards
+  shard_two:
+    <<: <%= "*" + ENV.fetch('DB_MODE', 'mysql') %>
+    database: moviestore_development_shard_two
+    migrations_paths: db/migrate_shards
+  shard_three:
+    <<: <%= "*" + ENV.fetch('DB_MODE', 'mysql') %>
+    database: moviestore_development_shard_three
+    migrations_paths: db/migrate_shards
   cache:
     <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>
     database: moviestore_development_cache
