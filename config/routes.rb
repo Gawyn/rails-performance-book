@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       end
 
       resources :stores, only: [:show] do
+        resources :audits, only: [:index]
         resources :films, only: [:index] do
           get :rentals
           resources :rentals, only: [:create]

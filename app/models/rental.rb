@@ -1,13 +1,22 @@
 class Rental < ApplicationRecord
   after_create :cache_for_followers
+  after_create :generate_create_audit
   after_commit :recalculate_store_rentals
 
   belongs_to :customer, counter_cache: true
   belongs_to :inventory
+  has_one :audit, as: :subject
   has_one :store, through: :inventory
   has_one :film, through: :inventory
 
-  
+  def self.backfill_audits
+    all.each(&:generate_audit)
+  end
+
+  def generate_audit
+    store.generate_audit('Rental creation', self, customer) unless audit
+  end
+
   private
 
   def cache_for_followers
