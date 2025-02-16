@@ -116,6 +116,7 @@ GEM
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
+    ffi (1.17.1-arm64-darwin)
     fiber-storage (1.0.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
@@ -156,6 +157,19 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    karafka (2.4.17)
+      base64 (~> 0.2)
+      karafka-core (>= 2.4.4, < 2.5.0)
+      karafka-rdkafka (>= 0.17.2)
+      waterdrop (>= 2.7.3, < 3.0.0)
+      zeitwerk (~> 2.3)
+    karafka-core (2.4.8)
+      karafka-rdkafka (>= 0.17.6, < 0.19.0)
+      logger (>= 1.6.0)
+    karafka-rdkafka (0.18.1)
+      ffi (~> 1.15)
+      mini_portile2 (~> 2.6)
+      rake (> 12)
     logger (1.6.2)
     loofah (2.23.1)
       crass (~> 1.0.2)
@@ -169,6 +183,7 @@ GEM
     matrix (0.4.2)
     memory_profiler (1.1.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.8)
     minitest (5.25.4)
     msgpack (1.7.5)
     mysql2 (0.5.6)
@@ -292,6 +307,10 @@ GEM
     useragent (0.16.11)
     warden (1.2.9)
       rack (>= 2.0.9)
+    waterdrop (2.8.2)
+      karafka-core (>= 2.4.3, < 3.0.0)
+      karafka-rdkafka (>= 0.17.5)
+      zeitwerk (~> 2.3)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -329,6 +348,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
+  karafka
   memory_profiler
   mysql2
   pg (~> 1.4)
