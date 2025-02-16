@@ -1,0 +1,26 @@
+I, [2025-02-16T20:02:42.063189 #94000]  INFO -- : 
+@@@                                             @@@@@  @@@
+@@@                                            @@@     @@@
+@@@  @@@    @@@@@@@@@   @@@ @@@   @@@@@@@@@  @@@@@@@@  @@@  @@@@   @@@@@@@@@
+@@@@@@     @@@    @@@   @@@@@    @@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@@@@@    @@@    @@@   @@@     @@@@    @@@    @@@     @@@@@@@    @@@    @@@
+@@@  @@@@  @@@@@@@@@@   @@@      @@@@@@@@@@    @@@     @@@  @@@@   @@@@@@@@@@
+
+
+I, [2025-02-16T20:02:42.063239 #94000]  INFO -- : [0;31mUpgrade to Karafka Pro for more features and support: https://karafka.io[0m
+I, [2025-02-16T20:02:42.074110 #94000]  INFO -- : Running in ruby 3.4.1 (2024-12-25 revision 48d4efcb85) +PRISM [arm64-darwin22]
+I, [2025-02-16T20:02:42.074147 #94000]  INFO -- : Running Karafka 2.4.17 server
+I, [2025-02-16T20:02:42.074154 #94000]  INFO -- : See LICENSE and the LGPL-3.0 for licensing details
+I, [2025-02-16T20:02:49.219831 #94000]  INFO -- : [a9414f75071f] Polled 1 messages in 1005.19ms
+I, [2025-02-16T20:02:49.220914 #94000]  INFO -- : [af216c3af617] Consume job for RentalsConsumer on rentals/0 started
+I, [2025-02-16T20:02:49.269595 #94000]  INFO -- : [af216c3af617] Consume job for RentalsConsumer on rentals/0 finished in 48.54 ms
+I, [2025-02-16T20:02:59.318375 #94000]  INFO -- : [a9414f75071f] Polled 1 messages in 1005.26ms
+I, [2025-02-16T20:02:59.318914 #94000]  INFO -- : [af216c3af617] Consume job for RentalsConsumer on rentals/0 started
+I, [2025-02-16T20:02:59.326623 #94000]  INFO -- : [af216c3af617] Consume job for RentalsConsumer on rentals/0 finished in 7.64 ms
+I, [2025-02-16T20:03:10.272266 #94000]  INFO -- : Received SIGINT system signal
+I, [2025-02-16T20:03:10.272597 #94000]  INFO -- : Stopping Karafka server
+I, [2025-02-16T20:03:10.384149 #94000]  INFO -- : [af216c3af617] Shutdown job for RentalsConsumer on rentals/0 started
+I, [2025-02-16T20:03:10.384511 #94000]  INFO -- : [af216c3af617] Shutdown job for RentalsConsumer on rentals/0 finished in 0.12 ms
+I, [2025-02-16T20:03:11.827402 #94000]  INFO -- : Stopped Karafka server
+I, [2025-02-16T20:03:11.827790 #94000]  INFO -- : [waterdrop-a3d876d9771d] Closing producer
+I, [2025-02-16T20:03:11.827973 #94000]  INFO -- : [waterdrop-a3d876d9771d] Closing producer took 0.23 ms
