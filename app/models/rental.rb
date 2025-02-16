@@ -2,6 +2,7 @@ class Rental < ApplicationRecord
   after_create :cache_for_followers
   after_create :generate_create_audit
   after_commit :recalculate_store_rentals
+  after_save :recalculate_customer_stats_profile
 
   belongs_to :customer, counter_cache: true
   belongs_to :inventory
@@ -13,7 +14,7 @@ class Rental < ApplicationRecord
     all.each(&:generate_audit)
   end
 
-  def generate_audit
+  def generate_create_audit
     store.generate_audit('Rental creation', self, customer) unless audit
   end
 
@@ -31,5 +32,9 @@ class Rental < ApplicationRecord
 
   def recalculate_store_rentals
     store.set_most_rented_film!
+  end
+
+  def recalculate_customer_stats_profile
+    RecalculateCustomerStatsProfileJob.perform_later(customer_id)
   end
 end

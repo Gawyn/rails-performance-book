@@ -232,6 +232,8 @@ GEM
     rake (13.2.1)
     rdoc (6.8.1)
       psych (>= 4.0.0)
+    redis-client (0.23.2)
+      connection_pool
     regexp_parser (2.9.3)
     reline (0.5.12)
       io-console (~> 0.5)
@@ -247,6 +249,12 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sidekiq (7.3.9)
+      base64
+      connection_pool (>= 2.3.0)
+      logger
+      rack (>= 2.2.4)
+      redis-client (>= 0.22.2)
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -327,6 +335,7 @@ DEPENDENCIES
   puma (~> 6.0)
   rails (~> 8.0)
   selenium-webdriver
+  sidekiq
   slim
   solid_cache (~> 1.0)
   solid_queue (~> 1.1)
