@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   mount Karafka::Web::App, at: '/karafka'
   mount Sidekiq::Web => "/sidekiq"
 
+  if !Rails.env.production? # Replace this with an authentication check
+    mount Flipper::UI.app(Flipper) => '/flipper'
+  end
+
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_12_024914) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_17_180348) do
   create_table "customer_stats_profiles", charset: "utf8mb3", force: :cascade do |t|
     t.integer "customer_id"
     t.text "data"
@@ -33,6 +33,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_12_024914) do
     t.text "big_text_column"
     t.index ["language_id", "title"], name: "index_films_on_language_id_and_title"
     t.index ["title"], name: "index_films_on_title"
+  end
+
+  create_table "flipper_features", charset: "utf8mb3", force: :cascade do |t|
+    t.string "key", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_flipper_features_on_key", unique: true
+  end
+
+  create_table "flipper_gates", charset: "utf8mb3", force: :cascade do |t|
+    t.string "feature_key", null: false
+    t.string "key", null: false
+    t.text "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true, length: { value: 255 }
   end
 
   create_table "followings", charset: "utf8mb3", force: :cascade do |t|

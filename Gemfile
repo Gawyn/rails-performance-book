@@ -111,3 +111,7 @@ gem 'datadog', require: 'datadog/auto_instrument'
 
 gem 'packwerk'
 gem 'packwerk-extensions'
+
+gem 'flipper'
+gem 'flipper-active_record'
+gem 'flipper-ui'
