@@ -253,6 +253,11 @@ GEM
       prism (>= 0.25.0)
       sorbet-runtime (>= 0.5.9914)
       zeitwerk (>= 2.6.1)
+    packwerk-extensions (0.3.0)
+      packwerk (>= 2.2.1)
+      railties (>= 6.0.0)
+      sorbet-runtime
+      zeitwerk
     parallel (1.26.3)
     parser (3.3.7.1)
       ast (~> 2.4.1)
@@ -421,6 +426,7 @@ DEPENDENCIES
   memory_profiler
   mysql2
   packwerk
+  packwerk-extensions
   pg (~> 1.4)
   puma (~> 6.0)
   rack-attack

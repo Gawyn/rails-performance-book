@@ -21,3 +21,5 @@
 
 # Where you want the cache to be stored (default below)
 # cache_directory: 'tmp/cache/packwerk'
+require:
+  - packwerk/privacy/checker

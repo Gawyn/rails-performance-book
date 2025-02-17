@@ -110,3 +110,4 @@ gem 'aws-sdk-s3'
 gem 'datadog', require: 'datadog/auto_instrument'
 
 gem 'packwerk'
+gem 'packwerk-extensions'

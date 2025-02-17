@@ -12,7 +12,7 @@ class Store < ApplicationRecord
 
   def generate_audit(event, subject, actor)
     ActiveRecord::Base.connected_to(shard: shard) do
-      Audit.create(
+      AuditInterface.create(
         event: event,
         subject: subject,
         actor: actor,
