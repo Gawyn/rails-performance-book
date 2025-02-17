@@ -1,0 +1,27 @@
+<h1>
+  <%= @customer.name %>
+</h1>
+<div class="rentals">
+    <h2>| Rentals</h2>
+    <%= "#{@customer.rentals_count} rentals" %>
+</div>
+
+<script>
+  <%= "var customerId = #{@customer.id}" %>
+  fetch("/api/v1/customers/" + customerId + "/rentals.json").then(function(r) { 
+    r.json().then(function(content) {
+      var table = "<table>"
+      console.log(content);
+      content.forEach((rental) => {
+        console.log(rental);
+        table += "<tr>"
+        table += "<td>" + rental.movie_name + "</td>"
+        table += "<td>" + (rental.rental_date || "") + "</td>"
+        table += "<td>" + (rental.returnal_date || "") + "</td>"
+        table += "</tr>"
+      });
+      var target = document.querySelector(".rentals");
+      target.innerHTML += table;
+    })
+  })
+</script>

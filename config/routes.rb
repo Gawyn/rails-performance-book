@@ -1,6 +1,8 @@
+require 'karafka/web'
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  mount Karafka::Web::App, at: '/karafka'
   mount Sidekiq::Web => "/sidekiq"
 
   if Rails.env.development?
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
       end
 
       resources :customers, only: [:index] do
+        get :archived_rentals
         get :timeline
         get :rentals
       end

@@ -41,7 +41,7 @@ gem 'kaminari'
 gem 'graphql'
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -100,3 +100,11 @@ gem "solid_queue", "~> 1.1"
 gem "sidekiq"
 
 gem 'karafka'
+
+gem "karafka-web", "~> 0.10.4"
+
+gem 'rack-attack'
+
+gem 'aws-sdk-s3'
+
+gem 'datadog', require: 'datadog/auto_instrument'

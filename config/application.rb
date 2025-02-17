@@ -1,4 +1,5 @@
 require_relative "boot"
+require_relative '../app/middleware/datadog_middleware'
 require_relative '../app/middleware/shard_switcher'
 
 require "rails/all"
@@ -21,6 +22,7 @@ module Moviestore
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.middleware.use Middleware::ShardSwitcher
+    config.middleware.use Middleware::DatadogMiddleware
 
     # Configuration for the application, engines, and railties goes here.
     #

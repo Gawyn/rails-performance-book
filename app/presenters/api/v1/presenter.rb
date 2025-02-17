@@ -8,18 +8,20 @@ class Api::V1::Presenter
   def to_json(exclude: [])
     return nil unless resource
 
-    object = Rails.cache.fetch(cache_key)
+    Datadog::Tracing.trace('presenter.to_json', service: 'presentation-layer', resource: resource&.class&.to_s) do
+      object = Rails.cache.fetch(cache_key)
 
-    if object && object[:expiration_key] == expiration_key
-      return object.tap { |h| h.delete(:expiration_key) } 
-    end
+      if object && object[:expiration_key] == expiration_key
+        return object.tap { |h| h.delete(:expiration_key) } 
+      end
 
-    as_json.merge(expiration_key: expiration_key).tap do |object|
-      Rails.cache.write(cache_key, object)
-      object.delete(:expiring_key)
+      as_json.merge(expiration_key: expiration_key).tap do |object|
+        Rails.cache.write(cache_key, object)
+        object.delete(:expiring_key)
 
-      exclude.each do |excluded_attr|
-        object.delete(excluded_attr)
+        exclude.each do |excluded_attr|
+          object.delete(excluded_attr)
+        end
       end
     end
   end

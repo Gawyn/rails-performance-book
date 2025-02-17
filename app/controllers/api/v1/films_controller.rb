@@ -59,6 +59,7 @@ class Api::V1::FilmsController < ApplicationController
 
       films.map do |film|
         decorated_film_with_embedded_rentals(film)
+      end
     else
       scope.select(:id, :title).map do |film| 
         Api::V1::FilmPresenter.new(film).to_json

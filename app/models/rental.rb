@@ -11,8 +11,14 @@ class Rental < ApplicationRecord
   has_one :store, through: :inventory
   has_one :film, through: :inventory
 
+  scope :to_be_archived, -> { where("returnal_date < ?", Time.now - 1.year) }
+
   def self.backfill_audits
     all.each(&:generate_audit)
+  end
+
+  def self.archived_rentals_bucket_key(customer_id)
+    "archived_rentals_for_user_#{customer_id}"
   end
 
   def generate_create_audit
