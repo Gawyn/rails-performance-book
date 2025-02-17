@@ -24,6 +24,14 @@ module Moviestore
     config.middleware.use Middleware::ShardSwitcher
     config.middleware.use Middleware::DatadogMiddleware
 
+    Dir["./components/*"].each do |path|
+      next unless File.directory?(path)
+      component = path.split("/").last
+
+      config.autoload_paths += 
+        Dir[Rails.root.join('components', component, 'app', '**')]
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

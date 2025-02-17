@@ -1,0 +1,30 @@
+# This file contains a list of dependencies that are not part of the long term plan for the
+# 'components/audit' package.
+# We should generally work to reduce this list over time.
+#
+# You can regenerate this file using the following command:
+#
+# bin/packwerk update-todo
+---
+".":
+  "::Api::V1::Presenter":
+    violations:
+    - dependency
+    files:
+    - components/audit/app/presenters/api/v1/audit_presenter.rb
+  "::ApplicationController":
+    violations:
+    - dependency
+    files:
+    - components/audit/app/controllers/api/v1/audits_controller.rb
+  "::ShardRecord":
+    violations:
+    - dependency
+    files:
+    - components/audit/app/models/audit.rb
+  "::Store":
+    violations:
+    - dependency
+    files:
+    - components/audit/app/controllers/api/v1/audits_controller.rb
+    - components/audit/app/models/audit.rb
