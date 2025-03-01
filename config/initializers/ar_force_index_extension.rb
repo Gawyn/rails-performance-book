@@ -1,4 +1,4 @@
-class << ActiveRecord::Base
+class ActiveRecord::Base
   def use_index(index)
     from("#{table_name} USE INDEX(#{index})")
   end
