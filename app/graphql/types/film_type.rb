@@ -6,5 +6,6 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :language_id, Integer
     field :big_text_column, String
+    field :rentals, [Types::RentalType]
   end
 end
