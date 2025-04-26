@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
     cache_key = request.path + "###-expiration_key"
     object = Rails.cache.fetch(cache_key)
 
+    return object if object
+
     object = yield
     object.tap do |object|
       Rails.cache.write(cache_key, object)
