@@ -1,0 +1,56 @@
+## @param api_key - string - required
+## @env DD_API_KEY - string - required
+## The Datadog API key used by your Agent to submit metrics and events to Datadog.
+## Create a new API key here: https://app.datadoghq.com/organization-settings/api-keys .
+## Read more about API keys here: https://docs.datadoghq.com/account_management/api-app-keys/#api-keys .
+## Update this with your personal api key
+api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+## @param site - string - optional - default: datadoghq.com
+## @env DD_SITE - string - optional - default: datadoghq.com
+## The site of the Datadog intake to send Agent data to.
+## The site parameter must be set to enable your agent with Remote Configuration.
+## Set to 'datadoghq.eu' to send data to the EU site.
+## Set to 'us3.datadoghq.com' to send data to the US3 site.
+## Set to 'us5.datadoghq.com' to send data to the US5 site.
+## Set to 'ap1.datadoghq.com' to send data to the AP1 site.
+## Set to 'ddog-gov.com' to send data to the US1-FED site.
+site: us5.datadoghq.com
+
+##################################
+## Log collection Configuration ##
+##################################
+
+## @param logs_enabled - boolean - optional - default: false
+## @env DD_LOGS_ENABLED - boolean - optional - default: false
+## Enable Datadog Agent log collection by setting logs_enabled to true.
+#
+logs_enabled: true
+
+####################################
+## Trace Collection Configuration ##
+####################################
+
+## @param apm_config - custom object - optional
+## Enter specific configurations for your trace collection.
+## Uncomment this parameter and the one below to enable them.
+## See https://docs.datadoghq.com/agent/apm/
+#
+apm_config:
+
+#   # @param enabled - boolean - optional - default: true
+#   # @env DD_APM_ENABLED - boolean - optional - default: true
+#   # Set to true to enable the APM Agent.
+#
+  enabled: true
+
+#   # @param env - string - optional - default: none
+#   # @env DD_APM_ENV - string - optional - default: none
+#   # The environment tag that Traces should be tagged with.
+#   # If not set the value will be inherited, in order, from the top level
+#   # "env" config option if set and then from the 'env:' tag if present in the
+#   # 'tags' top level config option.
+#
+  env: staging
+
+hostname: rails-performance-book

@@ -9,12 +9,17 @@ postgres: &postgres
   encoding: unicode
   pool: 5
   username: postgres
-  password: password
+  password: postgres
+  host: postgres_db
+  port: 5432
 
 mysql: &mysql
   adapter: mysql2
   encoding: utf8
   username: root
+  password: root
+  host: mysql_db
+  port: 3306
 
 development:
   <<: <%= ENV['DB_MODE'] ? "*#{ENV['DB_MODE']}" : "*mysql" %>

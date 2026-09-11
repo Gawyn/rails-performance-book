@@ -8,7 +8,7 @@ data = CSV.read('lib/data.csv')
 long_text = File.open('lib/assets/long_text.txt').read[0..64000]
 n = data.count
 language_i = 1
-data.each_with_index do |content, i|
+insert_data = data.map.with_index do |content, i|
   title, language_name = content
   puts "Creating film #{i+1} of #{n}"
   language = Language.where(name: language_name).first
@@ -17,7 +17,18 @@ data.each_with_index do |content, i|
     language.save
     language_i += 1
   end
-  Film.new(id: i + 1, title: title, language: language, big_text_column: long_text).save
+  
+  {
+    id: i+1,
+    title: title,
+    language_id: language.id,
+    big_text_column: long_text,
+  }
+end
+total_chunks = n / 1000
+insert_data.each_slice(1000).with_index do |slice, i|
+  pp "Inserting film chunk #{i} of #{total_chunks}"
+  Film.insert_all(slice)
 end
 
 pp "Creating 10 stores"
